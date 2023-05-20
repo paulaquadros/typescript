@@ -1,10 +1,9 @@
-const constante: number = 2;
-let variavel;
-var outraVariavel;
-let souVariável = "feia";
+var outOfIf = 'out of if'
 
-const funcao = function(){
-    return "oie"
+if(true){
+    var insideOfIf = 'inside of if';
+    console.log(insideOfIf)
 }
 
-console.log(funcao)
+console.log(outOfIf)
+console.log(insideOfIf)

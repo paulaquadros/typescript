@@ -1,9 +1,8 @@
 "use strict";
-const constante = 2;
-let variavel;
-var outraVariavel;
-let souVariável = "feia";
-const funcao = function () {
-    return "oie";
-};
-console.log(funcao);
+var outOfIf = 'out of if';
+if (true) {
+    var insideOfIf = 'inside of if';
+    console.log(insideOfIf);
+}
+console.log(outOfIf);
+console.log(insideOfIf);
