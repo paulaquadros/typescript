@@ -4,12 +4,13 @@ abstract class Conta {
   protected cliente: Cliente;
   protected agencia: string;
 
-  constructor(cliente: Cliente) {
+  constructor(cliente: Cliente, agencia: string) {
     this.saldo = 0;
     this.cliente = cliente;
-    this.agencia = "0001";
+    this.agencia = agencia;
   }
 
+  // Método abstrato que retorna o tipo da conta, implementado nas classes PessoaFisica e PessoaJuridica
   abstract tipoConta(): string;
 
   // Método que faz o depósito de um valor na conta e mostra o saldo atual
@@ -62,8 +63,8 @@ abstract class Conta {
 class PessoaFisica extends Conta {
   private cpf: string;
 
-  constructor(cliente: Cliente, cpf: string) {
-    super(cliente);
+  constructor(cliente: Cliente, cpf: string, agencia: string) {
+    super(cliente, agencia);
     this.cpf = cpf;
   }
 
@@ -76,8 +77,8 @@ class PessoaFisica extends Conta {
 class PessoaJuridica extends Conta {
   private cnpj: string;
 
-  constructor(cliente: Cliente, cnpj: string) {
-    super(cliente);
+  constructor(cliente: Cliente, cnpj: string, agencia: string) {
+    super(cliente, agencia);
     this.cnpj = cnpj;
   }
 
@@ -103,13 +104,13 @@ class Cliente {
 
 // Criando alguns clientes e contas de exemplo
 const cliente1 = new Cliente("João");
-const pf1 = new PessoaFisica(cliente1, "123.456.789-00");
-const pj1 = new PessoaJuridica(cliente1, "12.345.678/0001-00");
+const pf1 = new PessoaFisica(cliente1, "123.456.789-00", "001");
+const pj1 = new PessoaJuridica(cliente1, "12.345.678/0001-00", "001");
 cliente1.adicionarConta(pf1);
 cliente1.adicionarConta(pj1);
 
-const cliente2 = new Cliente("Maria");
-const pf2 = new PessoaFisica(cliente2, "987.654.321-00");
+const cliente2 = new Cliente("Paula");
+const pf2 = new PessoaFisica(cliente2, "987.654.321-00", "002");
 cliente2.adicionarConta(pf2);
 
 // Realizando operações nas contas
