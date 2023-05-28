@@ -18,7 +18,7 @@ const livros = [
         categoria: CategoriaLivro.FANTASIA,
     },
     {
-        nome: "1984",
+        nome: "Coração",
         preco: 19.99,
         categoria: CategoriaLivro.DISTOPIA,
     },
@@ -28,7 +28,10 @@ const livros = [
     },
 ];
 for (const livro of livros) {
-    console.log(`Livro: ${livro.nome}`);
+    const nomeFormatado = livro.nome.includes(" ")
+        ? livro.nome.toLowerCase()
+        : livro.nome.toUpperCase();
+    console.log(`Livro: ${nomeFormatado}`);
     console.log(`Preço: R$ ${livro.preco.toFixed(2)}`);
     console.log(`Categoria: ${livro.categoria || CategoriaLivro.OUTROS}`);
     console.log("---------------------");
