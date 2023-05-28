@@ -117,3 +117,28 @@ class GerenciadorTurmas {
     });
   }
 }
+
+// Exemplo de uso
+const gerenciador = new GerenciadorTurmas();
+
+const turma1 = new Turma(
+  "Turma de Matemática",
+  Turno.Manhã,
+  "Matemática",
+  Area.Exatas
+);
+const turma2 = new Turma(
+  "Turma de História",
+  Turno.Tarde,
+  "História",
+  Area.Humanas
+);
+
+gerenciador.adicionarTurma(turma1);
+gerenciador.adicionarTurma(turma2);
+
+gerenciador.imprimirTurmas();
+
+console.log("--- Após alteração ---");
+gerenciador.alterarTurma(1, "Nova descrição da turma de Matemática");
+gerenciador.imprimirTurmas();
