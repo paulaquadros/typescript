@@ -11,35 +11,45 @@ interface Livro {
   categoria?: CategoriaLivro;
 }
 
-const livros: Livro[] = [
-  {
-    nome: "Dom Quixote",
-    preco: 29.99,
-    categoria: CategoriaLivro.FICCAO,
-  },
-  {
-    nome: "O Senhor dos Anéis",
-    preco: 49.99,
-    categoria: CategoriaLivro.FANTASIA,
-  },
-  {
-    nome: "Coração",
-    preco: 19.99,
-    categoria: CategoriaLivro.DISTOPIA,
-  },
-  {
-    nome: "Livro sem categoria",
-    preco: 9.99,
-  },
-];
+type Autor = "JK Rowling" | "George Orwell";
 
-for (const livro of livros) {
-  const nomeFormatado = livro.nome.includes(" ")
-    ? livro.nome.toLowerCase()
-    : livro.nome.toUpperCase();
+type Biblioteca = { [autor in Autor]: Livro[] };
 
-  console.log(`Livro: ${nomeFormatado}`);
-  console.log(`Preço: R$ ${livro.preco.toFixed(2)}`);
-  console.log(`Categoria: ${livro.categoria || CategoriaLivro.OUTROS}`);
+const biblioteca: Biblioteca = {
+  "JK Rowling": [
+    {
+      nome: "Harry Potter",
+      preco: 29.99,
+      categoria: CategoriaLivro.FICCAO,
+    },
+    {
+      nome: "Animais Fantásticos",
+      preco: 49.99,
+      categoria: CategoriaLivro.FANTASIA,
+    },
+  ],
+  "George Orwell": [
+    {
+      nome: "1984",
+      preco: 19.99,
+      categoria: CategoriaLivro.DISTOPIA,
+    },
+    {
+      nome: "A Revolução dos Bichos",
+      preco: 9.99,
+      categoria: CategoriaLivro.OUTROS,
+    },
+  ],
+};
+
+Object.entries(biblioteca).forEach(([autor, livros]) => {
+  console.log(`Autor: ${autor}`);
+  console.log("Livros:");
+  livros.forEach((livro) => {
+    const nomeFormatado = livro.nome.includes(" ")
+      ? livro.nome.toLowerCase()
+      : livro.nome.toUpperCase();
+    console.log(`- ${nomeFormatado}`);
+  });
   console.log("---------------------");
-}
+});
